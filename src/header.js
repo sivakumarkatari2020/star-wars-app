@@ -5,22 +5,7 @@ import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import bgImg from './images/star-wars-backgrounds-1.jpg';
 
-const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.9),
-    '&:hover': {
-        backgroundColor: alpha(theme.palette.common.white, 1),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-        width: '300px',
-    },
-}));
-
 const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
     height: '100%',
     position: 'absolute',
     pointerEvents: 'none',
@@ -33,18 +18,12 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: '#000',
     '& .MuiInputBase-input': {
-        padding: theme.spacing(1, 1, 1, 0),
         border: '4px solid rgba(0,0,0,0.15)',
         // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('sm')]: {
             width: '300px',
-            '&:focus': {
-                //border: '4px solid rgba(0,0,0,0.3)',
-                
-            },
         },
     },
 }));
@@ -71,7 +50,7 @@ const useStyles = makeStyles({
         minHeight: '250px',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-end',
+        alignItems: 'center',
         justifyContent: 'space-between',
 
         '@media (max-width:500px)': {
@@ -99,6 +78,26 @@ const useStyles = makeStyles({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    search: {
+        width: '90%',
+        maxWidth: '500px',
+        background: '#FFF',
+        padding: '10px',
+        borderRadius: '10px',
+        border: '4px solid rgba(0,0,0,0.15)',
+
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
+    iconWrapper: {
+        width: '20%',
+        color: '#000',
+    },
+    inputBox: {
+        width: '80%',
+    }
 })
 
 function Header(props) {
@@ -115,16 +114,17 @@ function Header(props) {
                     <Typography variant="h5">characters</Typography>
                 </Box>
                 <Box className={styles.searchField}>
-                    <Search>
-                        <SearchIconWrapper>
+                    <Box className={styles.search}>
+                        <Box className={styles.iconWrapper}>
                             <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
+                        </Box>
+                        <InputBase
+                            className={styles.inputBox}
                             placeholder="Search any charecter name..."
                             inputProps={{ 'aria-label': 'search' }}
                             onChange={(e)=>setSearch(e.target.value)}
                         />
-                    </Search>
+                    </Box>
                 </Box>
             </Box>
         </Box>
