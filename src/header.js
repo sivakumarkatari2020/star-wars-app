@@ -1,32 +1,8 @@
 import React from 'react';
 import {Box,InputBase,Typography} from '@mui/material';
 import {makeStyles} from '@mui/styles';
-import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import bgImg from './images/star-wars-backgrounds-1.jpg';
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#000',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: '#000',
-    '& .MuiInputBase-input': {
-        border: '4px solid rgba(0,0,0,0.15)',
-        // vertical padding + font size from searchIcon
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            width: '300px',
-        },
-    },
-}));
 
 const useStyles = makeStyles({
     header: {
